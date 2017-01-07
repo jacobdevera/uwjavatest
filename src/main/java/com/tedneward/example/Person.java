@@ -4,6 +4,7 @@ import java.beans.*;
 import java.util.*;
 
 public class Person {
+  private static int counter;
   private int age;
   private String name;
   private double salary;
@@ -18,6 +19,41 @@ public class Person {
     name = n;
     age = a;
     salary = s;
+    counter++;
+  }
+
+  public static int count() {
+    return counter;
+  }
+
+  public void setName(String name) {
+    if (name == null) {
+      throw new IllegalArgumentException();
+    }
+    this.name = name;
+  }
+
+  public void setAge(int age) {
+    if (age < 0) {
+      throw new IllegalArgumentException();
+    }
+    this.age = age;
+  }
+
+  public void setSalary(double salary) {
+    this.salary = salary;
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
+  public int getAge() {
+    return this.age;
+  }
+
+  public double getSalary() {
+    return this.salary;
   }
 
   public void setSSN(String value) {
