@@ -3,7 +3,7 @@ package com.tedneward.example;
 import java.beans.*;
 import java.util.*;
 
-public class Person {
+public class Person implements Comparable<Person> {
   private static int counter;
   private int age;
   private String name;
@@ -21,6 +21,13 @@ public class Person {
     salary = s;
     counter++;
   }
+
+  class AgeComparator implements Comparator<Person> {
+    public int compare(Person a, Person b) {
+      return a.age < b.age ? -1 : a.age == b.age ? 0 : 1;
+    }
+  }
+
 
   public static int count() {
     return counter;
@@ -61,7 +68,7 @@ public class Person {
     catch (IllegalArgumentException e) {
       return false;
     }
-    return (other.name == this.name && other.name == this.salary);
+    return (other.name == this.name && other.age == this.age);
   }
 
   public void setSSN(String value) {
@@ -88,8 +95,8 @@ public class Person {
     return age + 10;
   }
   
-  public String tostring() {
-    return "{{FIXME}}";
+  public String toString() {
+    return this.name;
   }
 
   // PropertyChangeListener support; you shouldn't need to change any of
