@@ -99,6 +99,10 @@ public class Person implements Comparable<Person> {
     return this.name;
   }
 
+  public int compareTo(Person other) {
+    return this.salary > other.salary ? -1 : this.salary == other.salary ? 0 : 1;
+  }
+
   // PropertyChangeListener support; you shouldn't need to change any of
   // these two methods or the field
   //
