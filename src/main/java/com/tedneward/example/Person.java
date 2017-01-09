@@ -56,6 +56,14 @@ public class Person {
     return this.salary;
   }
 
+  /* CHECK */
+  public boolean equals(Person other) {
+    catch (IllegalArgumentException e) {
+      return false;
+    }
+    return (other.name == this.name && other.name == this.salary);
+  }
+
   public void setSSN(String value) {
     String old = ssn;
     ssn = value;
@@ -63,6 +71,7 @@ public class Person {
     this.pcs.firePropertyChange("ssn", old, value);
     propertyChangeFired = true;
   }
+
   public boolean getPropertyChangeFired() {
     return propertyChangeFired;
   }
