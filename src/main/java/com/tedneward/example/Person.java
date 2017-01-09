@@ -22,12 +22,11 @@ public class Person implements Comparable<Person> {
     counter++;
   }
 
-  class AgeComparator implements Comparator<Person> {
+  public static class AgeComparator implements Comparator<Person> {
     public int compare(Person a, Person b) {
       return a.age < b.age ? -1 : a.age == b.age ? 0 : 1;
     }
   }
-
 
   public static int count() {
     return counter;
@@ -64,11 +63,12 @@ public class Person implements Comparable<Person> {
   }
 
   /* CHECK */
-  public boolean equals(Person other) {
-    catch (IllegalArgumentException e) {
-      return false;
+  public boolean equals(Object other) {
+    if (other instanceof Person) {
+      Person p = (Person) other;
+      return (name.equals(p.name) && age == p.age);
     }
-    return (other.name == this.name && other.age == this.age);
+    return false;
   }
 
   public void setSSN(String value) {
@@ -96,19 +96,20 @@ public class Person implements Comparable<Person> {
   }
   
   public String toString() {
-    return this.name;
+    return "[Person name:" + this.name + " age:" + this.age + " salary:" + this.salary + "]";
   }
 
   public int compareTo(Person other) {
     return this.salary > other.salary ? -1 : this.salary == other.salary ? 0 : 1;
   }
 
-  public static ArrayList<Person> getNewardFamily() {
-    List<Person> result = new ArrayList<Person>;
+  public static List<Person> getNewardFamily() {
+    List<Person> result = new ArrayList<Person>();
     result.add(new Person("Ted", 41, 250000));
     result.add(new Person("Charlotte", 43, 150000));
     result.add(new Person("Michael", 22, 10000));
     result.add(new Person("Matthew", 15, 0));
+    return result;
   }
 
   // PropertyChangeListener support; you shouldn't need to change any of
