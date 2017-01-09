@@ -103,6 +103,14 @@ public class Person implements Comparable<Person> {
     return this.salary > other.salary ? -1 : this.salary == other.salary ? 0 : 1;
   }
 
+  public static ArrayList<Person> getNewardFamily() {
+    List<Person> result = new ArrayList<Person>;
+    result.add(new Person("Ted", 41, 250000));
+    result.add(new Person("Charlotte", 43, 150000));
+    result.add(new Person("Michael", 22, 10000));
+    result.add(new Person("Matthew", 15, 0));
+  }
+
   // PropertyChangeListener support; you shouldn't need to change any of
   // these two methods or the field
   //
